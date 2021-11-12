@@ -1,2 +1,2 @@
 
-web: gunicorn nameOfProject.wsgi --log-file -
+web: gunicorn developsnews.wsgi --log-file -
