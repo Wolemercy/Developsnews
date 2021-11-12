@@ -32,7 +32,7 @@ services:
   celery_worker:
     build:
       context: .
-    command: celery -A developsnews worker -l debug
+    command: celery -A developsnews worker -l info
     volumes:
       - ./:/app
     env_file:
@@ -46,7 +46,7 @@ services:
   celery_beat:
     build:
       context: .
-    command: celery -A developsnews beat -l debug
+    command: celery -A developsnews beat -l info
     volumes:
       - ./:/app
     env_file:

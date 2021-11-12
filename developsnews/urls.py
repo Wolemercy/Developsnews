@@ -15,20 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-from dj_rest_auth.views import (LoginView, LogoutView)
+from django.views.generic import RedirectView
+from dj_rest_auth.views import LoginView, LogoutView
 from dj_rest_auth.registration.views import RegisterView
 
 urlpatterns = [
+    path("", RedirectView.as_view(pattern_name="register", permanent=True)),
     # admin
     path("admin/", admin.site.urls),
-
     # api
-    path("api/v1.0/", include('api.urls')),
-
+    path("api/v1.0/", include("api.urls")),
     # auth
-    path('login/', LoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
-    path('register/', RegisterView.as_view(), name='register'),
-
+    path("login/", LoginView.as_view(), name="login"),
+    path("logout/", LogoutView.as_view(), name="logout"),
+    path("register/", RegisterView.as_view(), name="register"),
 ]

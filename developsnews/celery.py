@@ -3,20 +3,21 @@ import os
 from celery import Celery
 from celery.schedules import crontab
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'developsnews.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "developsnews.settings")
 
-app = Celery('developsnews')
-app.config_from_object('django.conf:settings', namespace='CELERY')
+app = Celery("developsnews")
+app.config_from_object("django.conf:settings", namespace="CELERY")
 
 app.conf.beat_schedule = {
-    'refresh_votes': {
+    "refresh_votes": {
         "task": "api.tasks.refresh_votes",
-        "schedule": crontab(minute=0, hour=0)
+        "schedule": crontab(minute=0, hour=0),
     }
 }
 
 app.autodiscover_tasks()
 
+
 @app.task(bind=True)
 def debug_task(self):
-    print(f'Request: {self.request!r}')
+    print(f"Request: {self.request!r}")

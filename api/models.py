@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.base import Model
 
 # Create your models here.
 
@@ -13,7 +12,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-creation_date"]
-    
+
     def __str__(self):
         return f"{self.title}"
 
@@ -28,24 +27,19 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     content = models.TextField()
     creation_date = models.DateTimeField(auto_now_add=True)
-    # parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['-creation_date']
-    
+        ordering = ["-creation_date"]
+
     def __str__(self):
-        return f'Comment by {self.author.username} on {self.post}'
+        return f"Comment by {self.author.username} on {self.post}"
 
     # def children(self):
     #     return Comment.objects.filter(parent=self)
-    
+
     # @property
     # def is_parent(self):
     #     if self.parent is not None:
     #         return False
-        
+
     #     return True
-
-
-    
-

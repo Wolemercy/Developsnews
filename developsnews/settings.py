@@ -28,7 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'devlopsnews.herokuapp.com']
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "devlopsnews.herokuapp.com"]
 
 
 # Application definition
@@ -40,21 +40,19 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # third-party apps
-    'django.contrib.sites',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'dj_rest_auth',
-    'dj_rest_auth.registration',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'django_celery_beat',
-    'whitenoise.runserver_nostatic',
-
+    "django.contrib.sites",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "django_celery_beat",
+    "whitenoise.runserver_nostatic",
     # local apps
-    'api',
+    "api",
 ]
 
 SITE_ID = 1
@@ -91,38 +89,38 @@ TEMPLATES = [
 WSGI_APPLICATION = "developsnews.wsgi.application"
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        ],
-    'DEFAULT_PERMISSION_CLASSES': [
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
         # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-        ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 30,
+    ],
+    "DEFAULT_PAGINATION_CLASS":
+        "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 30,
 }
 
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-SYSTEM_ENV = config('SYSTEM_ENV', default='DEVELOPMENT')
+# SYSTEM_ENV and DATABASE
 
-if SYSTEM_ENV != 'PRODUCTION':
+SYSTEM_ENV = config("SYSTEM_ENV", default="DEVELOPMENT")
+
+if SYSTEM_ENV != "PRODUCTION":
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASS'),
-            'HOST': config('DB_HOST'),
-            }
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": config("DB_NAME"),
+            "USER": config("DB_USER"),
+            "PASSWORD": config("DB_PASS"),
+            "HOST": config("DB_HOST"),
         }
+    }
 
 else:
-    DATABASES = {
-        'default': dj_database_url.config()
-        }
+    DATABASES = {"default": dj_database_url.config()}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -147,8 +145,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Email
+
 ACCOUNT_EMAIL_REQUIRED = False
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -167,8 +166,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
 
 # Default primary key field type
@@ -177,5 +176,5 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CELERY
-CELERY_BROKER_URL = config('REDIS_URL')
-CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
+CELERY_BROKER_URL = config("REDIS_URL")
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers.DatabaseScheduler"
