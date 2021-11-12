@@ -11,7 +11,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.conf.beat_schedule = {
     'refresh_votes': {
         "task": "api.tasks.refresh_votes",
-        "schedule": crontab(minute='*/1')
+        "schedule": crontab(minute=0, hour=0)
     }
 }
 
