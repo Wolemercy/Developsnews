@@ -68,16 +68,16 @@ Some of the primary endpoints are:
 * [Django Rest Framework](https://www.django-rest-framework.org/)
 
 ### Message Broker
-* [Redis](https://aws.amazon.com/)
+* [Redis](https://redis.io/)
 
 ### Queue
-* [Celery](https://aws.amazon.com/)
+* [Celery](https://docs.celeryproject.org/en/stable/index.html)
 
 ### Database
 * [PostgreSQL](https://www.postgresql.org/)
 
 ### Containerization
-* [Docker]()
+* [Docker](https://www.docker.com/)
 
 ### Deployment 
 * [Heroku](https://heroku.com)
@@ -125,10 +125,10 @@ The other environment variables that need to be set are the {{username}} and {{e
 ## Roadmap
 With a bit more time, there are certain noteworthy improvements that could be made. Here are a few of them;
 
-- Implement Custom Logging: At the moment, we don't have an efficient logging process incorporated into the application. This is another improvement we can make to improve the observability and ease of error debugging of the system. We could log API requests, particularly critical actions that users perform and errors they might cause. Furthermore, this API ncorporated Celery as its queue and that comes with its own set of logs. Having all these logs organized would make our API service much easier to manage and.
-- Extend User Accounts functionality: This API currently only supports user registration, login, and logout. It would be appropriate to extend the user model functionality beyond what is currently obtainable. Also, it would make for a secure service if email address confirmation was made necessary. 
-- Enable Replies to Comments: This API only supports one level of comment, i.e. a comment on a particular news post and that does not make for a pretty engaging application. Having a functionality that would allow users reply to other users' comments would make the API more appealing to users.
-- Test and More Tests: There is no standard testing being done on the API. We should include testing capabilities into the application and aim for a high code coverage (say 90) to ensure that we haave a reasonable degree of confidence that the system is well tested. Testing would help us catch bugs, detect trace critical changes, and also help us understand how the API interacts with external services. Given that it was an API designed with intention of being run as a Docker container, testing is especially important.
+- **Implement Custom Logging:** At the moment, we don't have an efficient logging process incorporated into the application. This is another improvement we can make to improve the observability and ease of error debugging of the system. We could log API requests, particularly critical actions that users perform and errors they might cause. Furthermore, this API ncorporated Celery as its queue and that comes with its own set of logs. Having all these logs organized would make our API service much easier to manage and.
+- **Extend User Accounts functionality:** This API currently only supports user registration, login, and logout. It would be appropriate to extend the user model functionality beyond what is currently obtainable. Also, it would make for a secure service if email address confirmation was made necessary. 
+- **Enable Replies to Comments:** This API only supports one level of comment, i.e. a comment on a particular news post and that does not make for a pretty engaging application. Having a functionality that would allow users reply to other users' comments would make the API more appealing to users.
+- **Test and More Tests:** There is no standard testing being done on the API. We should include testing capabilities into the application and aim for a high code coverage (say 90) to ensure that we haave a reasonable degree of confidence that the system is well tested. Testing would help us catch bugs, detect trace critical changes, and also help us understand how the API interacts with external services. Given that it was an API designed with intention of being run as a Docker container, testing is especially important.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
